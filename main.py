@@ -5,13 +5,6 @@ from tabulate import tabulate
 import sys
 import time
 
-
-def ping_sweep(range):
-    r = nm.scan(hosts=range, arguments='-n -sn --min-parallelism 100 --max-parallelism 256')
-    print("PING SWEEP RESULTS: {}".format(r))
-    return r
-
-
 def syn_scan(r):
     host_arg =r
     ps = nmap.PortScanner()
@@ -35,7 +28,6 @@ def parse_syn_data(syn):
 def count_live_in_range(portscan, ranges):
     range_count = {}
     for i in ranges:
-        print(i)
         range_count[i] = 0
     l_of_ips = []
     for ip in portscan.keys():
